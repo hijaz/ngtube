@@ -1,0 +1,22 @@
+<div class="alert alert-danger" role="alert" *ngIf="error">
+    {{error}}
+  </div>
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="staticEmail" formControlName="username">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword" formControlName="password">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Log In</button>
+        </form>
+    </div>
+  </div>
