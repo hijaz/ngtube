@@ -10,6 +10,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { HomeComponent } from './components/home/home.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { UploadVideoComponent } from './components/upload-video/upload-video.component';
+import { WatchVideoComponent } from './components/watch-video/watch-video.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UploadVideoComponent } from './components/upload-video/upload-video.com
     LoginFormComponent,
     HomeComponent,
     LogoutComponent,
-    UploadVideoComponent
+    UploadVideoComponent,
+    WatchVideoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
-interface Video {
-  description: string,
-  id: string,
-  rating: []
-  title: string,
-  userid: string,
-  videoid: string,
-  views: number
-}
+import { Video } from 'src/app/types/Video'; 
 
 @Component({
   selector: 'app-home',

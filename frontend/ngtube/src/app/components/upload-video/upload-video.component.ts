@@ -46,7 +46,8 @@ export class UploadVideoComponent {
   async upload() {
     const userid = localStorage.getItem('loggedInUser');
     const formData = new FormData();
-    formData.append('file', this.files[0], `${userid}__${this.files[0].name}`);
+    const filename = this.files[0].name.replace(/[^a-z0-9.-]/gi,'');
+    formData.append('file', this.files[0], `${userid}__${filename}`);
 
     // json-server throws an error so we are adding a try catch 
     // temporarily to ignore that error
@@ -55,7 +56,7 @@ export class UploadVideoComponent {
       await this.http.post('http://localhost:3000/videos', {
         title: this.title,
         description: this.description,
-        videoid: `${userid}__${this.files[0].name}`,
+        videoid: `${userid}__${filename}}`,
         userid: userid,
         views: 0,
         rating: []
