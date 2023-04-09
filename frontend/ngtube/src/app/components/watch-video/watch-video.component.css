@@ -5,3 +5,9 @@ video{
 #vidContainer{
     margin-bottom: 200px;
 }
+
+#vidMeta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

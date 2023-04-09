@@ -1,6 +1,10 @@
 <div id="vidContainer">
     <video controls autoplay [src]="'http://localhost:3001/' + videoDetails.videoid" class="object-fit-contain"></video>
-    <div><h2>{{videoDetails.title}}</h2> Views: {{videoDetails.views + 1}}</div> 
+    <div id="vidMeta">
+        <h2>{{videoDetails.title}}</h2>
+        <div>Views: {{videoDetails.views + 1}}</div> 
+        <app-rate-video></app-rate-video>
+    </div> 
     <p>{{videoDetails.description}}</p>
     <app-comments 
         [comments]="videoDetails.comments" 

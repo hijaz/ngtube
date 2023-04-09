@@ -12,6 +12,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { UploadVideoComponent } from './components/upload-video/upload-video.component';
 import { WatchVideoComponent } from './components/watch-video/watch-video.component';
 import { CommentsComponent } from './components/comments/comments.component';
+import { RateVideoComponent } from './components/rate-video/rate-video.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CommentsComponent } from './components/comments/comments.component';
     LogoutComponent,
     UploadVideoComponent,
     WatchVideoComponent,
-    CommentsComponent
+    CommentsComponent,
+    RateVideoComponent
   ],
   imports: [
     BrowserModule,
