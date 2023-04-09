@@ -16,6 +16,25 @@
       "id": 3
     }
   ],
-  "videos": [],
+  "videos": [
+    {
+      "title": "some title",
+      "description": "dzrfgn erg ikjnserg s ergs er",
+      "videoid": "user1__pexels-cottonbro-studio-4962914-4096x2160-25fps.mp4",
+      "userid": "user1",
+      "views": 0,
+      "rating": [],
+      "id": 1
+    },
+    {
+      "title": "another vid",
+      "description": "zksefn awekjfn awekfjn awefjk",
+      "videoid": "user2__pexels-kamil-zubrzycki-3147349-1920x1080-25fps.mp4",
+      "userid": "user2",
+      "views": 0,
+      "rating": [],
+      "id": 2
+    }
+  ],
   "comments": []
 }

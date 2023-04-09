@@ -1,3 +1,7 @@
 button {
     float: right;
 }
+
+.navbar {
+    background-color: cornflowerblue;
+}
