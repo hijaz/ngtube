@@ -22,7 +22,14 @@ export class WatchVideoComponent implements OnInit{
     this.http.get('http://localhost:3000/videos').subscribe(videos => {
       if(!Array.isArray(videos)) return;
       this.videoDetails = videos.find( video => video.videoid === this.videoid);
+
+      const currentViews = this.videoDetails.views;
+      this.http.patch('http://localhost:3000/videos/'+this.videoDetails.id, {
+        views: currentViews + 1
+      }).subscribe()
     })
+
+
   }
 
 
