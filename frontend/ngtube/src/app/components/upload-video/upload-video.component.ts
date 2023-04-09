@@ -1,5 +1,6 @@
 import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload-video',
@@ -26,7 +27,7 @@ export class UploadVideoComponent {
   description: string = '';
   files: File[] = [];
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, private router: Router){}
 
   handleFileInput($event: Event) {
     this.files = [];
@@ -47,17 +48,26 @@ export class UploadVideoComponent {
     const formData = new FormData();
     formData.append('file', this.files[0], `${userid}__${this.files[0].name}`);
 
-    await this.http.post('http://localhost:3000/videos', {
-      title: this.title,
-      description: this.description,
-      videoid: `${userid}__${this.files[0].name}`,
-      userid: userid,
-      views: 0,
-      rating: []
-    }).toPromise();
+    // json-server throws an error so we are adding a try catch 
+    // temporarily to ignore that error
 
-    const response = await this.http.post('http://localhost:3000/upload', formData).toPromise();
-    console.log({response})
+    try{
+      await this.http.post('http://localhost:3000/videos', {
+        title: this.title,
+        description: this.description,
+        videoid: `${userid}__${this.files[0].name}`,
+        userid: userid,
+        views: 0,
+        rating: []
+      }).toPromise();
+
+      const response = await this.http.post('http://localhost:3000/upload', formData).toPromise();
+      console.log({response})
+  } catch(error){
+    this.router.navigateByUrl('/home')
+  }
+  this.router.navigateByUrl('/home')
+    
   }
 
 }

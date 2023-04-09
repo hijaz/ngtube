@@ -1,0 +1,9 @@
+.flexGrid{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.myVideoCard{
+    margin: 50px;
+    min-width: 300px;
+}
