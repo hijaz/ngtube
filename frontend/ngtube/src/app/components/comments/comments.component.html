@@ -1,0 +1,14 @@
+<h4>Comments</h4>
+<div class="mb-3">
+    <textarea [(ngModel)]="myComment" class="form-control" rows="3"></textarea>
+    <br>
+    <button (click)="submitComment()">Submit</button>
+</div>
+
+<ul class="list-group">
+    <li *ngFor="let comment of comments.reverse()" class="list-group-item">
+        <div class="commentMeta"><b>{{comment.author}}</b>      (<i>{{ comment.date }}</i>)</div>
+        <div class="commentText">{{ comment.text }}</div>
+    </li>
+</ul>
+

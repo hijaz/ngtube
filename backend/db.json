@@ -24,6 +24,7 @@
       "userid": "user1",
       "views": 0,
       "rating": [],
+      "comments": [],
       "id": 1
     },
     {
@@ -33,6 +34,7 @@
       "userid": "user2",
       "views": 0,
       "rating": [],
+      "comments": [],
       "id": 2
     },
     {
@@ -42,6 +44,7 @@
       "userid": "user2",
       "views": 0,
       "rating": [],
+      "comments": [],
       "id": 3
     },
     {
@@ -51,6 +54,7 @@
       "userid": "user2",
       "views": 0,
       "rating": [],
+      "comments": [],
       "id": 4
     },
     {
@@ -60,6 +64,7 @@
       "userid": "user3",
       "views": 0,
       "rating": [],
+      "comments": [],
       "id": 5
     },
     {
@@ -69,6 +74,33 @@
       "userid": "user3",
       "views": 0,
       "rating": [],
+      "comments": [
+        {
+          "author": "user3",
+          "date": "Sun Apr 09 2023",
+          "text": "awdfawfwf"
+        },
+        {
+          "author": "user3",
+          "date": "Sun Apr 09 2023",
+          "text": "kewsjf aiwejfbnaiwukejfb aiuwefbnawuiefbn iuabwef anweiuf"
+        },
+        {
+          "author": "user3",
+          "date": "Sun Apr 09 2023",
+          "text": "awedfef"
+        },
+        {
+          "author": "user1",
+          "date": "Sun Apr 09 2023",
+          "text": "aESfawef rsegsear erg "
+        },
+        {
+          "author": "user1",
+          "date": "Sun Apr 09 2023",
+          "text": "zdfgzd ersg "
+        }
+      ],
       "id": 6
     },
     {
@@ -78,6 +110,7 @@
       "userid": "user3",
       "views": 0,
       "rating": [],
+      "comments": [],
       "id": 7
     },
     {
@@ -87,6 +120,7 @@
       "userid": "user3",
       "views": 0,
       "rating": [],
+      "comments": [],
       "id": 8
     },
     {
@@ -96,6 +130,7 @@
       "userid": "user3",
       "views": 0,
       "rating": [],
+      "comments": [],
       "id": 9
     }
   ],

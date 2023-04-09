@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { UploadVideoComponent } from './components/upload-video/upload-video.component';
 import { WatchVideoComponent } from './components/watch-video/watch-video.component';
+import { CommentsComponent } from './components/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { WatchVideoComponent } from './components/watch-video/watch-video.compon
     HomeComponent,
     LogoutComponent,
     UploadVideoComponent,
-    WatchVideoComponent
+    WatchVideoComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

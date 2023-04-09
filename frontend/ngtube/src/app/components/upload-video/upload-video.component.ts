@@ -59,7 +59,8 @@ export class UploadVideoComponent {
         videoid: `${userid}__${filename}}`,
         userid: userid,
         views: 0,
-        rating: []
+        rating: [],
+        comments: []
       }).toPromise();
 
       const response = await this.http.post('http://localhost:3000/upload', formData).toPromise();
