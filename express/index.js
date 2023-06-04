@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const userRouter = require("./users/user.router");
+const videoRouter = require("./videos/video.router");
 
 const { connectToDatabase, disconnectFromDatabase } = require("./db");
 
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/users", userRouter);
+app.use("/videos", videoRouter);
 
 connectToDatabase()
   .then(() => {
