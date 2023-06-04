@@ -1,0 +1,41 @@
+<div class="alert alert-danger" role="alert" *ngIf="error">
+  {{ error }}
+</div>
+
+<h4>Create new Account</h4>
+<form (ngSubmit)="createUser()">
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input
+      class="form-control"
+      type="text"
+      id="username"
+      name="username"
+      [(ngModel)]="user.username"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      class="form-control"
+      type="password"
+      id="password"
+      name="password"
+      [(ngModel)]="user.password"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input
+      type="email"
+      name="email"
+      class="form-control"
+      id="email"
+      placeholder="name@example.com"
+      [(ngModel)]="user.email"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Create</button>
+</form>

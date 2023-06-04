@@ -6,9 +6,43 @@ const {
   getUserById,
   updateUser,
   deleteUser,
+  getUserByUsername,
 } = require("./user.controller");
 
 const router = express.Router();
+
+router.post("/login", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    if (!username || !password) {
+      res.status(400);
+      res.send({
+        error: true,
+        msg: "username or password missing",
+      });
+    } else {
+      const user = await getUserByUsername(username);
+      if (user && user.password && user.password === password) {
+        res.status(200);
+        res.send({
+          login: true,
+        });
+      } else {
+        res.status(401);
+        res.send({
+          login: false,
+        });
+      }
+    }
+  } catch (error) {
+    console.error("Error logging in", error);
+    res.status(500);
+    res.send({
+      error: true,
+      msg: JSON.stringify(error),
+    });
+  }
+});
 
 router.get("/", async (req, res) => {
   try {

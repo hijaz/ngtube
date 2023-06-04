@@ -13,6 +13,7 @@ import { UploadVideoComponent } from './components/upload-video/upload-video.com
 import { WatchVideoComponent } from './components/watch-video/watch-video.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { RateVideoComponent } from './components/rate-video/rate-video.component';
+import { CreateAccountComponent } from './components/create-account/create-account.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RateVideoComponent } from './components/rate-video/rate-video.component
     UploadVideoComponent,
     WatchVideoComponent,
     CommentsComponent,
-    RateVideoComponent
+    RateVideoComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,

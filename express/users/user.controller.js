@@ -34,6 +34,17 @@ const getUserById = async (userId) => {
   }
 };
 
+// Read a specific user by username
+const getUserByUsername = async (username) => {
+  try {
+    const user = await User.findOne({ username: username });
+    return user;
+  } catch (error) {
+    console.error("Error reading user by username", error);
+    throw error;
+  }
+};
+
 // Update a user
 const updateUser = async (userId, userData) => {
   try {
@@ -64,4 +75,5 @@ module.exports = {
   getUserById,
   updateUser,
   deleteUser,
+  getUserByUsername,
 };
