@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 
 const userRouter = require("./users/user.router");
 const videoRouter = require("./videos/video.router");
@@ -9,6 +10,7 @@ const { connectToDatabase, disconnectFromDatabase } = require("./db");
 const app = express();
 const port = 3000;
 
+app.use(express.static(path.join(__dirname, "uploads")));
 app.use(cors());
 app.use(express.json());
 
