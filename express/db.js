@@ -1,8 +1,13 @@
 const mongoose = require("mongoose");
+const path = require("path");
+
+require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 
 const username = process.env.MONGO_USER;
 const password = process.env.MONGO_PASS;
-const conn_str = `mongodb+srv://${username}:${password}@cluster0.vobywq4.mongodb.net/?retryWrites=true&w=majority`;
+
+console.log({ username, password });
+const conn_str = `mongodb+srv://${username}:${password}@cluster1.gwgq6eo.mongodb.net/?retryWrites=true&w=majority`;
 
 const connectToDatabase = async () => {
   try {

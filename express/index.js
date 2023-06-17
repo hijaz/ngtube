@@ -1,17 +1,19 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const dotenv = require("dotenv");
+const multer = require("multer");
+const fs = require("fs");
 
 const userRouter = require("./users/user.router");
 const videoRouter = require("./videos/video.router");
 
 const { connectToDatabase, disconnectFromDatabase } = require("./db");
 
-dotenv.config();
+console.log(path.resolve(__dirname, ".env"));
 
 const app = express();
 const port = 3000;
+const uploadService = multer({ dest: "uploads" });
 
 app.use(express.static(path.join(__dirname, "uploads")));
 app.use(cors());
@@ -23,6 +25,25 @@ app.get("/", (req, res) => {
 
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
+
+app.post("/uploadVideo", uploadService.single("file"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).send("No file attached!");
+  }
+
+  const file = req.file;
+  const fileName = file.originalname;
+  const newFilePath = path.join(__dirname, "uploads", fileName);
+
+  fs.rename(file.path, newFilePath, (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send(err);
+    } else {
+      return res.status(200).send("File uploaded succesfully");
+    }
+  });
+});
 
 connectToDatabase()
   .then(() => {
