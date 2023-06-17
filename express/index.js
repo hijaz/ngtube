@@ -1,11 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const dotenv = require("dotenv");
 
 const userRouter = require("./users/user.router");
 const videoRouter = require("./videos/video.router");
 
 const { connectToDatabase, disconnectFromDatabase } = require("./db");
+
+dotenv.config();
 
 const app = express();
 const port = 3000;

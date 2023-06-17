@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const username = "hijaz";
-const password = "EgHRTEd7JoQU5Vs4";
+const username = process.env.MONGO_USER;
+const password = process.env.MONGO_PASS;
 const conn_str = `mongodb+srv://${username}:${password}@cluster0.vobywq4.mongodb.net/?retryWrites=true&w=majority`;
 
 const connectToDatabase = async () => {
