@@ -6,6 +6,7 @@ const fs = require("fs");
 
 const userRouter = require("./users/user.router");
 const videoRouter = require("./videos/video.router");
+const { createVideo } = require("./videos/video.controller");
 
 const { connectToDatabase, disconnectFromDatabase } = require("./db");
 
@@ -35,12 +36,28 @@ app.post("/uploadVideo", uploadService.single("file"), (req, res) => {
   const fileName = file.originalname;
   const newFilePath = path.join(__dirname, "uploads", fileName);
 
-  fs.rename(file.path, newFilePath, (err) => {
+  fs.rename(file.path, newFilePath, async (err) => {
     if (err) {
       console.error(err);
       return res.status(500).send(err);
     } else {
-      return res.status(200).send("File uploaded succesfully");
+      const { title, description, videoid, userid } = req.body;
+      const videoData = {
+        title,
+        description,
+        videoid,
+        userid,
+        views: 0,
+        ratings: [],
+        comments: [],
+      };
+
+      try {
+        await createVideo(videoData);
+        return res.status(200).send("File uploaded succesfully");
+      } catch (err) {
+        res.send(500).send(`Error uploading file: ${err}`);
+      }
     }
   });
 });

@@ -4,7 +4,11 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload-video',
-  template: `<br /><br />
+  template: `<br />
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+      {{ error }}
+    </div>
+    <br />
     <div class="mb-3">
       <div class="mb-3">
         <h2>Upload Video</h2>
@@ -42,6 +46,7 @@ import { Router } from '@angular/router';
 export class UploadVideoComponent {
   title: string = '';
   description: string = '';
+  error: string = '';
   files: File[] = [];
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -61,34 +66,39 @@ export class UploadVideoComponent {
   }
 
   async upload() {
-    const userid = localStorage.getItem('loggedInUser');
+    // debugger;
+    const userid = localStorage.getItem('loggedInUser') || '';
     const formData = new FormData();
     const filename = this.files[0].name.replace(/[^a-z0-9.-]/gi, '');
-    formData.append('file', this.files[0], `${userid}__${filename}`);
+    const videoid = `${userid}__${filename}`;
+
+    formData.append('file', this.files[0], videoid);
+    formData.append('title', this.title);
+    formData.append('description', this.description);
+    formData.append('videoid', videoid);
+    formData.append('userid', userid);
 
     // json-server throws an error so we are adding a try catch
     // temporarily to ignore that error
 
     try {
-      await this.http
-        .post('http://localhost:3000/videos', {
-          title: this.title,
-          description: this.description,
-          videoid: `${userid}__${filename}`,
-          userid: userid,
-          views: 0,
-          rating: [],
-          comments: [],
-        })
-        .toPromise();
-
-      const response = await this.http
-        .post('http://localhost:3000/upload', formData)
-        .toPromise();
-      console.log({ response });
+      this.http.post('http://localhost:3000/uploadVideo', formData).subscribe(
+        (response) => {
+          debugger;
+          console.log(response);
+          this.router.navigateByUrl('/home');
+        },
+        (err) => {
+          if (err.status >= 400) {
+            this.error = 'Something went wrong uploading your video';
+          } else {
+            this.router.navigateByUrl('/home');
+          }
+        }
+      );
     } catch (error) {
-      this.router.navigateByUrl('/home');
+      debugger;
+      this.error = 'Something went wrong uploading your video';
     }
-    this.router.navigateByUrl('/home');
   }
 }
