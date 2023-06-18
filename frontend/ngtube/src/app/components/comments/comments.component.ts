@@ -5,26 +5,39 @@ import { Comment } from 'src/app/types/Comment';
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.css']
+  styleUrls: ['./comments.component.css'],
 })
 export class CommentsComponent {
   @Input() comments!: Comment[];
-  @Input() id!: number;
-  myComment: string = "";
+  @Input() id!: string;
+  myComment: string = '';
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) {}
 
-  submitComment(){
-    if(!this.myComment) return;
+  submitComment() {
+    if (!this.myComment) return;
     const loggedInUser = localStorage.getItem('loggedInUser');
     const date = new Date().toDateString();
-    this.http.patch('http://localhost:3000/videos/'+this.id, {
-      comments: [...this.comments, {
-        author: loggedInUser,
-        date: date,
-        text: this.myComment
-      }]
-    }).subscribe(() => location.reload());
+    this.http
+      .put('http://localhost:3000/videos/' + this.id, {
+        comments: [
+          ...this.comments,
+          {
+            author: loggedInUser,
+            date: date,
+            text: this.myComment,
+          },
+        ],
+      })
+      .subscribe(() => {
+        this.comments = [
+          ...this.comments,
+          {
+            author: loggedInUser || '',
+            date: date,
+            text: this.myComment,
+          },
+        ];
+      });
   }
-
 }

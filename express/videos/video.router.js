@@ -5,6 +5,7 @@ const {
   getVideos,
   getVideoById,
   updateVideo,
+  updateVideoByVideoId,
   deleteVideo,
   getVideoByVideoId,
   incrementViewCount,
@@ -76,7 +77,7 @@ router.post("/", async (req, res) => {
 router.put("/:videoid", async (req, res) => {
   try {
     const videoId = req.params.videoid;
-    const updatedVideo = await updateVideo(videoId, req.body);
+    const updatedVideo = await updateVideoByVideoId(videoId, req.body);
     res.status(200);
     res.send(updatedVideo);
   } catch (error) {

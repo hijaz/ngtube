@@ -45,6 +45,20 @@ const getVideoByVideoId = async (videoid) => {
   }
 };
 
+// Update a video by videoId
+const updateVideoByVideoId = async (videoid, videoData) => {
+  try {
+    const video = await Video.findOne({ videoid });
+    const updatedVideo = Video.findByIdAndUpdate(video._id, videoData, {
+      new: true,
+    });
+    return updatedVideo;
+  } catch (error) {
+    console.error("Error updating video", error);
+    throw error;
+  }
+};
+
 // Update a video
 const updateVideo = async (videoId, videoData) => {
   try {
@@ -86,6 +100,7 @@ module.exports = {
   getVideos,
   getVideoById,
   updateVideo,
+  updateVideoByVideoId,
   deleteVideo,
   getVideoByVideoId,
   incrementViewCount,
