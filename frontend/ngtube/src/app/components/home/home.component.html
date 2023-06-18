@@ -1,23 +1,47 @@
 <h3>My Videos</h3>
 <div class="flexGrid">
-    <div *ngFor="let video of myVideos" class="card myVideoCard" style="width: 18rem;">
-        <video [src]="'http://localhost:3001/' + video.videoid" class="object-fit-contain"></video>
-        <div class="card-body">
-        <h5 class="card-title">{{video.title}}</h5>
-        <p class="card-text">{{video.description}}</p>
-        <a href="#" class="btn btn-primary" [routerLink]="'/video/'+video.videoid">Watch</a>
-        </div>
+  <div
+    *ngFor="let video of myVideos"
+    class="card myVideoCard"
+    style="width: 18rem"
+  >
+    <video
+      [src]="'http://localhost:3000/' + video.videoid"
+      class="object-fit-contain"
+    ></video>
+    <div class="card-body">
+      <h5 class="card-title">{{ video.title }}</h5>
+      <p class="card-text">{{ video.description }}</p>
+      <a
+        href="#"
+        class="btn btn-primary"
+        [routerLink]="'/video/' + video.videoid"
+        >Watch</a
+      >
     </div>
   </div>
-  <br><br>
-  <h3>Popular Videos</h3>
-  <div class="flexGrid">
-    <div *ngFor="let video of popularVideos" class="card myVideoCard" style="width: 18rem;">
-        <video [src]="'http://localhost:3001/' + video.videoid" class="object-fit-contain"></video>
-        <div class="card-body">
-        <h5 class="card-title">{{video.title}}</h5>
-        <p class="card-text">{{video.description}}</p>
-        <a href="#" class="btn btn-primary" [routerLink]="'/video/'+video.videoid">Watch</a>
-        </div>
+</div>
+<br /><br />
+<h3>Popular Videos</h3>
+<div class="flexGrid">
+  <div
+    *ngFor="let video of popularVideos"
+    class="card myVideoCard"
+    style="width: 18rem"
+  >
+    <video
+      [src]="'http://localhost:3000/' + video.videoid"
+      class="object-fit-contain"
+    ></video>
+    <div class="card-body">
+      <h5 class="card-title">{{ video.title }}</h5>
+      <p class="card-text">{{ video.description }}</p>
+      <a
+        href="#"
+        class="btn btn-primary"
+        [routerLink]="'/video/' + video.videoid"
+        >Watch</a
+      >
     </div>
   </div>
+</div>

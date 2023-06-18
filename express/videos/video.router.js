@@ -7,6 +7,7 @@ const {
   updateVideo,
   deleteVideo,
   getVideoByVideoId,
+  incrementViewCount,
 } = require("./video.controller");
 
 const router = express.Router();
@@ -26,10 +27,25 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.patch("/:videoid/watched", async (req, res) => {
+  try {
+    const videoId = req.params.videoid;
+    await incrementViewCount(videoId);
+    res.status(200).send("View count incremented");
+  } catch (error) {
+    console.error("Error incrementing view count", error);
+    res.status(500);
+    res.send({
+      error: true,
+      msg: JSON.stringify(error),
+    });
+  }
+});
+
 router.get("/:videoid", async (req, res) => {
   try {
     const videoId = req.params.videoid;
-    const video = await getVideoById(videoId);
+    const video = await getVideoByVideoId(videoId);
     res.status(200);
     res.send(video);
   } catch (error) {

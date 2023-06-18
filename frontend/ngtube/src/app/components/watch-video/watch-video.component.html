@@ -1,14 +1,16 @@
 <div id="vidContainer">
-    <video controls autoplay [src]="'http://localhost:3001/' + videoDetails.videoid" class="object-fit-contain"></video>
-    <div id="vidMeta">
-        <h2>{{videoDetails.title}}</h2>
-        <div>Views: {{videoDetails.views + 1}}</div> 
-        <app-rate-video></app-rate-video>
-    </div> 
-    <p>{{videoDetails.description}}</p>
-    <app-comments 
-        [comments]="videoDetails.comments" 
-        [id]="videoDetails.id"
-        >
-    </app-comments>
+  <video
+    controls
+    autoplay
+    [src]="'http://localhost:3000/' + videoDetails.videoid"
+    class="object-fit-contain"
+  ></video>
+  <div id="vidMeta">
+    <h2>{{ videoDetails.title }}</h2>
+    <div>Views: {{ videoDetails.views + 1 }}</div>
+    <app-rate-video></app-rate-video>
+  </div>
+  <p>{{ videoDetails.description }}</p>
+  <app-comments [comments]="videoDetails.comments" [id]="videoDetails.id">
+  </app-comments>
 </div>

@@ -58,6 +58,18 @@ const updateVideo = async (videoId, videoData) => {
   }
 };
 
+// Increment View Count
+const incrementViewCount = async (videoId) => {
+  try {
+    const video = await getVideoByVideoId(videoId);
+    const currentViews = video.views;
+    await updateVideo(video._id, { views: currentViews + 1 });
+  } catch (error) {
+    console.error("Error incrementing view count");
+    throw error;
+  }
+};
+
 // Delete a video
 const deleteVideo = async (videoId) => {
   try {
@@ -76,4 +88,5 @@ module.exports = {
   updateVideo,
   deleteVideo,
   getVideoByVideoId,
+  incrementViewCount,
 };
