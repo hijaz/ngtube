@@ -2,7 +2,7 @@
   <video
     controls
     autoplay
-    [src]="'http://localhost:3000/' + videoDetails.videoid"
+    src="{{ backendLoc }}/{{ videoDetails.videoid }}"
     class="object-fit-contain"
   ></video>
   <div id="vidMeta">

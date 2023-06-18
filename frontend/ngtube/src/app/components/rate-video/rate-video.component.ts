@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { backendUrl } from 'src/app/constants';
 import { Rating } from 'src/app/types/Rating';
 
 @Component({
@@ -44,7 +45,7 @@ export class RateVideoComponent {
     const loggedInUser = localStorage.getItem('loggedInUser');
 
     this.http
-      .put('http://localhost:3000/videos/' + this.id, {
+      .put(`${backendUrl}/videos/` + this.id, {
         ratings: [
           ...this.ratings,
           {

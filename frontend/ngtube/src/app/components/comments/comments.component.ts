@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
+import { backendUrl } from 'src/app/constants';
 import { Comment } from 'src/app/types/Comment';
 
 @Component({
@@ -19,7 +20,7 @@ export class CommentsComponent {
     const loggedInUser = localStorage.getItem('loggedInUser');
     const date = new Date().toDateString();
     this.http
-      .put('http://localhost:3000/videos/' + this.id, {
+      .put(`${backendUrl}/videos/` + this.id, {
         comments: [
           ...this.comments,
           {

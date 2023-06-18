@@ -1,6 +1,7 @@
 import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { backendUrl } from 'src/app/constants';
 
 @Component({
   selector: 'app-upload-video',
@@ -82,7 +83,7 @@ export class UploadVideoComponent {
     // temporarily to ignore that error
 
     try {
-      this.http.post('http://localhost:3000/uploadVideo', formData).subscribe(
+      this.http.post(`${backendUrl}/uploadVideo`, formData).subscribe(
         (response) => {
           debugger;
           console.log(response);

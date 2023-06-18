@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { backendUrl } from 'src/app/constants';
 
 interface User {
   userid: string;
@@ -36,7 +37,7 @@ export class LoginFormComponent implements OnInit {
   onSubmit() {
     console.log('Form submitted');
     this.http
-      .post('http://localhost:3000/users/login', {
+      .post(`${backendUrl}/users/login`, {
         username: this.username,
         password: this.password,
       })

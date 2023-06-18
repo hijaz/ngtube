@@ -6,7 +6,7 @@
     style="width: 18rem"
   >
     <video
-      [src]="'http://localhost:3000/' + video.videoid"
+      src="{{ backendLoc }}/{{ video.videoid }}"
       class="object-fit-contain"
     ></video>
     <div class="card-body">
@@ -30,7 +30,7 @@
     style="width: 18rem"
   >
     <video
-      [src]="'http://localhost:3000/' + video.videoid"
+      src="{{ backendLoc }}/{{ video.videoid }}"
       class="object-fit-contain"
     ></video>
     <div class="card-body">

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { backendUrl } from 'src/app/constants';
 
 @Component({
   selector: 'app-create-account',
@@ -18,7 +19,7 @@ export class CreateAccountComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   createUser() {
-    this.http.post('http://localhost:3000/users', this.user).subscribe(
+    this.http.post(`${backendUrl}/users`, this.user).subscribe(
       (response) => {
         console.log('User created', response);
         this.router.navigateByUrl('/login');
