@@ -9,9 +9,7 @@
       (click)="submitRating(1)"
       type="button"
       class="btn"
-      [ngClass]="{
-        'btn-danger': !this.alreadyVoted || this.alreadyVoted === 1
-      }"
+      *ngClass="{ 'btn-danger': !this.alreadyVoted || this.alreadyVoted === 1 }"
     >
       ⭐
     </button>
@@ -19,7 +17,7 @@
       (click)="submitRating(2)"
       type="button"
       class="btn"
-      [ngClass]="{
+      *ngClass="{
         'btn-warning': !this.alreadyVoted || this.alreadyVoted === 2
       }"
     >
@@ -29,7 +27,7 @@
       (click)="submitRating(3)"
       type="button"
       class="btn"
-      [ngClass]="{
+      *ngClass="{
         'btn-primary': !this.alreadyVoted || this.alreadyVoted === 3
       }"
     >
@@ -39,7 +37,7 @@
       (click)="submitRating(4)"
       type="button"
       class="btn"
-      [ngClass]="{ 'btn-info': !this.alreadyVoted || this.alreadyVoted === 4 }"
+      *ngClass="{ 'btn-info': !this.alreadyVoted || this.alreadyVoted === 4 }"
     >
       ⭐
     </button>
@@ -47,7 +45,7 @@
       (click)="submitRating(5)"
       type="button"
       class="btn"
-      [ngClass]="{
+      *ngClass="{
         'btn-success': !this.alreadyVoted || this.alreadyVoted === 5
       }"
     >

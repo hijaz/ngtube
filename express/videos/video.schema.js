@@ -23,7 +23,7 @@ const videoSchema = new mongoose.Schema({
     required: true,
   },
   ratings: {
-    type: [Number],
+    type: [],
     required: true,
   },
   comments: {
