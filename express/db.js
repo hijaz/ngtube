@@ -7,7 +7,7 @@ const username = process.env.MONGO_USER;
 const password = process.env.MONGO_PASS;
 
 console.log({ username, password });
-const conn_str = `mongodb+srv://${username}:${password}@cluster1.gwgq6eo.mongodb.net/?retryWrites=true&w=majority`;
+const conn_str = `mongodb+srv://${username}:${password}@cluster0.ysyriwv.mongodb.net/?retryWrites=true&w=majority`;
 
 const connectToDatabase = async () => {
   try {
